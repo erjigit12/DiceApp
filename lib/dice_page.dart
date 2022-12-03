@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class DicePage extends StatefulWidget {
@@ -10,8 +9,8 @@ class DicePage extends StatefulWidget {
 }
 
 class _DicePageState extends State<DicePage> {
-  int leftDice = 2;
-  int rightDice = 5;
+  int leftDice = 3;
+  int rightDice = 4;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,10 @@ class _DicePageState extends State<DicePage> {
       appBar: AppBar(
         title: const Text(
           'ТАПШЫРМА-05',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w900),
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w900,
+          ),
         ),
         centerTitle: true,
         backgroundColor: const Color(0xffFF5353),
@@ -33,14 +35,20 @@ class _DicePageState extends State<DicePage> {
             Expanded(
                 child: InkWell(
               onTap: () {
+                // if (leftDice == 0) {
+                //   leftDice == 1;
+                // }else{
+                //   leftDice;
+                // }
                 setState(() {
-                  leftDice = Random().nextInt(7);
+                  leftDice = Random().nextInt(6) + 1;
+                  rightDice = Random().nextInt(6) + 1;
                 });
               },
               child: Padding(
                 padding: const EdgeInsets.all(13.0),
                 child: Image.asset(
-                  'assets/images/dice${leftDice == 0 ? leftDice == 1 : leftDice}.png',
+                  'assets/images/dice$leftDice.png',
                 ),
               ),
             )),
@@ -48,13 +56,14 @@ class _DicePageState extends State<DicePage> {
                 child: InkWell(
               onTap: () {
                 setState(() {
-                  rightDice = Random().nextInt(7);
+                  leftDice = Random().nextInt(6) + 1;
+                  rightDice = Random().nextInt(6) + 1;
                 });
               },
               child: Padding(
                 padding: const EdgeInsets.all(13.0),
                 child: Image.asset(
-                  'assets/images/dice${rightDice == 0 ? rightDice == 1 : rightDice}.png',
+                  'assets/images/dice$rightDice.png',
                 ),
               ),
             )),
